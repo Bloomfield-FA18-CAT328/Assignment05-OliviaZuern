@@ -13,4 +13,11 @@ public class Attacking : StateMachineBehaviour {
         enemyS.ChangeToAttacking();
         animator.SetInteger("AnimState", 3);
     }
+
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateUpdate(animator, stateInfo, layerIndex);
+        enemyS.OnAttackingUpdate();
+
+    }
 }

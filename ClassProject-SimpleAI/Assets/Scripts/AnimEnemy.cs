@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class AnimEnemy : MonoBehaviour
 {
     [SerializeField]
-    //private EnemyAIStates state = EnemyAIStates.Patrolling;
+    
     static private List<GameObject> patrolPoints = null;
 
     #region Enemy Options
@@ -33,7 +33,6 @@ public class AnimEnemy : MonoBehaviour
                 patrolPoints.Add(go);
             }
         }
-       // ChangeToPatrolling();
     }
 
     void Update()
@@ -41,7 +40,7 @@ public class AnimEnemy : MonoBehaviour
         float dist = Vector3.Distance(transform.position, playerOfInterest.transform.position);
         enAnim.SetFloat("PlayerDist", dist);
 
-        switch (enAnim.GetInteger("AnimState"))
+      /*  switch (enAnim.GetInteger("AnimState"))
         {
             case 3:
                 OnAttackingUpdate();
@@ -52,10 +51,10 @@ public class AnimEnemy : MonoBehaviour
             case 1:
                 OnPatrollingUpdate();
                 break;
-        }
+        }*/
     }
 
-    void OnAttackingUpdate()
+    public void OnAttackingUpdate()
     {
         float step = attackingSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, playerOfInterest.transform.position, step);
@@ -67,7 +66,7 @@ public class AnimEnemy : MonoBehaviour
         }*/
     }
 
-    void OnChasingUpdate()
+    public void OnChasingUpdate()
     {
         float step = chasingSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, playerOfInterest.transform.position, step);
@@ -79,7 +78,7 @@ public class AnimEnemy : MonoBehaviour
         }*/
     }
 
-    void OnPatrollingUpdate()
+    public void OnPatrollingUpdate()
     {
         float step = walkingSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, patrollingInterestPoint.transform.position, step);
@@ -91,16 +90,7 @@ public class AnimEnemy : MonoBehaviour
         }
     }
 
-   /* void OnTriggerEnter(Collider collider)
-    {
-        ChangeToChasing(collider.gameObject);
-    }
 
-    void OnTriggerExit(Collider collider)
-    {
-        ChangeToPatrolling();
-    }
-    */
    public void ChangeToPatrolling()
     {
        // state = EnemyAIStates.Patrolling;

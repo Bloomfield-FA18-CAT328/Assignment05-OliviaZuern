@@ -14,4 +14,10 @@ public class Chasing : StateMachineBehaviour
         enemyS.ChangeToChasing();
         animator.SetInteger("AnimState", 2);
     }
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateUpdate(animator, stateInfo, layerIndex);
+        enemyS.OnChasingUpdate();
+
+    }
 }
